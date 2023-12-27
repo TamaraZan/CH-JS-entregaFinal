@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/style.css">
+    <title>Javascript (CH) - Entrega 3</title>
+    <script src="js/bd.js" defer></script>
+    <script src="js/funciones.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Juego de preguntas y respuestas</h1>
+        <svg version="1.1" id="btnEstadisticas" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 50 50" enable-background="new 0 0 50 50" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path fill="#c3d4d4" d="M9.037,40.763h4.286c0.552,0,1-0.447,1-1v-7.314c0-0.553-0.448-1-1-1H9.037c-0.552,0-1,0.447-1,1v7.314 C8.037,40.315,8.485,40.763,9.037,40.763z M10.037,33.448h2.286v5.314h-2.286V33.448z"></path> <path fill="#c3d4d4" d="M21.894,40.763c0.552,0,1-0.447,1-1v-20.64c0-0.553-0.448-1-1-1h-4.286c-0.552,0-1,0.447-1,1v20.64 c0,0.553,0.448,1,1,1H21.894z M18.608,20.123h2.286v18.64h-2.286V20.123z"></path> <path fill="#c3d4d4" d="M30.465,40.763c0.552,0,1-0.447,1-1V25.96c0-0.553-0.448-1-1-1H26.18c-0.552,0-1,0.447-1,1v13.803 c0,0.553,0.448,1,1,1H30.465z M27.18,26.96h2.286v11.803H27.18V26.96z"></path> <path fill="#c3d4d4" d="M33.751,9.763v30c0,0.553,0.448,1,1,1h4.286c0.552,0,1-0.447,1-1v-30c0-0.553-0.448-1-1-1h-4.286 C34.199,8.763,33.751,9.21,33.751,9.763z M35.751,10.763h2.286v28h-2.286V10.763z"></path> </g></svg>
+    </header>
+    <main>
+        <section>
+            <h2 id="texto"></h2>
+            <button id="btnEmpezar">Empezar</button>
+            <div id="botones">
+                <button id="opcion0">op0</button>
+                <button id="opcion1">op1</button>
+                <button id="opcion2">op2</button>
+                <button id="opcion3">op3</button>
+            </div>
+        </section>
+
+        <section id="estadisticas">
+            <h2>Estadísticas</h2>
+            <div>
+                <h3>Generales:</h3>
+                <p>Preguntas Jugadas: <span id="cantJugadas"></span></p>
+                <p>Preguntas Correctas: <span id="cantCorrectas"></span></p>
+                <p>Porcentaje de aciertos: <span id="porcentajeAcierto"></span> % </p>
+                <p>Categoría más jugada: <span id="categMasJugada"></span></p>
+            </div>
+            <div>
+                <h3>Por categoría:</h3>
+                <h4>Geografía</h4>
+                <p>Preguntas Jugadas: <span id="cantJugadasGeografia"></span></p>
+                <p>Preguntas Correctas: <span id="cantCorrectasGeografia"></span></p>
+
+                <h4>Historia</h4>
+                <p>Preguntas Jugadas: <span id="cantJugadasHistoria"></span></p>
+                <p>Preguntas Correctas: <span id="cantCorrectasHistoria"></span></p>
+                
+                <h4>Entretenimiento</h4>
+                <p>Preguntas Jugadas: <span id="cantJugadasEntretenimiento"></span></p>
+                <p>Preguntas Correctas: <span id="cantCorrectasEntretenimiento"></span></p>
+                
+                <h4>Ciencia</h4>
+                <p>Preguntas Jugadas: <span id="cantJugadasCiencia"></span></p>
+                <p>Preguntas Correctas: <span id="cantCorrectasCiencia"></span></p>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <a href="https://www.freepik.com/free-photo/black-damage-wall_1035023.htm#query=dark%20pattern&position=32&from_view=search&track=ais&uuid=80588e91-9a4a-453a-9a20-7ac07668c4db">Imagen de fondo por kues1</a> en Freepik
+    </footer>
+</body>
+</html>

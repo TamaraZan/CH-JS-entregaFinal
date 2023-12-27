@@ -1,0 +1,235 @@
+const preguntas = [
+    {
+        pregunta: "¿Cuál es la capital de Francia?",
+        categoria: "geografia",
+        opciones: [
+            "Buenos Aires",
+            "Madrid",
+            "Paris",
+            "Lima",
+        ],
+        correcta: 2,
+    },
+    {
+        pregunta: "¿Cuál es el océano más grande?",
+        categoria: "geografia",
+        opciones: [
+            "Pacífico",
+            "Atlántico",
+            "Índico",
+            "Ártico",
+        ],
+        correcta: 0,
+    },
+    {
+        pregunta: "¿Qué año fue la revolución de Mayo?",
+        categoria: "historia",
+        opciones: [
+            "1816",
+            "1801",
+            "1910",
+            "1810",
+        ],
+        correcta: 3,
+    },
+    {
+        pregunta: "¿De quién en la canción 'It's a kind of magic'?",
+        categoria: "entretenimiento",
+        opciones: [
+            "Queen",
+            "Fito Paez",
+            "ACDC",
+            "The Beatles",
+        ],
+        correcta: 0,
+    },
+    {
+        pregunta: "¿Quién escribió el poema 'The raven'?",
+        categoria: "entretenimiento",
+        opciones: [
+            "Borges",
+            "Conan Doyle",
+            "Edgar Allan Poe",
+            "Jane Austin",
+        ],
+        correcta: 2,
+    },
+    {
+        pregunta: "¿Qué elemento se conoce como 'O'?",
+        categoria: "ciencia",
+        opciones: [
+            "Ozono",
+            "Oxigeno",
+            "Oxido",
+            "Orosco",
+        ],
+        correcta: 1,
+    },
+    {
+        pregunta: "¿Qué valores son los de tipo integer?",
+        categoria: "ciencia",
+        opciones: [
+            "Verdadero o falso",
+            "Cadena de caracteres",
+            "Números reales",
+            "Números enteros",
+        ],
+        correcta: 3,
+    },
+    {
+        pregunta: "¿Cuál es el valor de PI?",
+        categoria: "ciencia",
+        opciones: [
+            "2,14",
+            "3,14",
+            "1,34",
+            "1,24",
+        ],
+        correcta: 1,
+    },
+    {
+        pregunta: "¿Cuánto es 2+2?",
+        categoria: "ciencia",
+        opciones: [
+            "1",
+            "2",
+            "4",
+            "8",
+        ],
+        correcta: 2,
+    },
+    {
+        pregunta: "¿Qué significa la F en 'F=m*a'?",
+        categoria: "ciencia",
+        opciones: [
+            "Fuerza",
+            "Fósforo",
+            "Frequencia",
+            "Flujo",
+        ],
+        correcta: 0,
+    },
+    {
+        pregunta: "¿Cuándo acabó la II Guerra Mundial?",
+        categoria: "historia",
+        opciones: [
+            "1845",
+            "1854",
+            "1945",
+            "1954",
+        ],
+        correcta: 2,
+    },
+    {
+        pregunta: "¿Cuándo empezó la Primera Guerra Mundial?",
+        categoria: "historia",
+        opciones: [
+            "1924",
+            "1904",
+            "1934",
+            "1914",
+        ],
+        correcta: 3,
+    },
+    {
+        pregunta: "¿Cuándo se extinguieron los dinosaurios?",
+        categoria: "historia",
+        opciones: [
+            "Hace 33 millones de años",
+            "Hace 33 miles de años",
+            "Hace 66 miles de años",
+            "Hace 66 millones de años",
+        ],
+        correcta: 3,
+    },
+    {
+        pregunta: "Según la leyenda ¿quiénes fundaron a Roma?",
+        categoria: "historia",
+        opciones: [
+            "Rómulo y Remus",
+            "Rómulo y Remo",
+            "Romulum y Remus",
+            "Romulum y Remo",
+        ],
+        correcta: 1,
+    },
+    {
+        pregunta: "¿Cuál es país más poblado de la Tierra?",
+        categoria: "geografia",
+        opciones: [
+            "Rusia",
+            "China",
+            "India",
+            "Estados Unidos",
+        ],
+        correcta: 1,
+    },
+    {
+        pregunta: "¿Cuál es el continente más extenso del planeta?",
+        categoria: "geografia",
+        opciones: [
+            "Asia",
+            "Europa",
+            "Africa",
+            "Oceanía",
+        ],
+        correcta: 0,
+    },
+    {
+        pregunta: "¿Cuántas personas hay en el mundo?",
+        categoria: "geografia",
+        opciones: [
+            "3.950 millones",
+            "7.870 millones",
+            "10.220 millones",
+            "5.480 millones",
+        ],
+        correcta: 1,
+    },
+    {
+        pregunta: "¿Quién pintó 'La noche estrellada'?",
+        categoria: "entretenimiento",
+        opciones: [
+            "Van Gogh",
+            "Mozart",
+            "Salvador Dalí",
+            "Pablo Picasso",
+        ],
+        correcta: 0,
+    },
+    {
+        pregunta: "¿Cómo se llamaba el caballo de Don Quijote?",
+        categoria: "entretenimiento",
+        opciones: [
+            "Dulcinea",
+            "Clavileño",
+            "Rocinante",
+            "Sancho Panza",
+        ],
+        correcta: 2,
+    },
+    {
+        pregunta: "¿Quién creo los cómics de Spiderman?",
+        categoria: "entretenimiento",
+        opciones: [
+            "Chris Claremont",
+            "Jack Kirby",
+            "Will Smith",
+            "Stan Lee",
+        ],
+        correcta: 3,
+    },
+    // {
+    //     pregunta: "¿?",
+    //     categoria: "",
+    //     opciones: [
+    //         "",
+    //         "",
+    //         "",
+    //         "",
+    //     ],
+    //     correcta: ,
+    // },
+]
+
+const categoriasValidas = ["geografia", "historia", "entretenimiento", "ciencia"];
