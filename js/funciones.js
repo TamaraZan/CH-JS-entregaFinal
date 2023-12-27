@@ -101,7 +101,6 @@ function escribirPregunta(categoria) {
 }
 
 function resultado(pregActual, nroRta){
-    console.log(pregActual.pregunta);
     document.getElementById("botones").style.display = "none";
     if(pregActual.correcta == nroRta) {
         texto.textContent="Correcta";
