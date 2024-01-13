@@ -1,9 +1,13 @@
+//COMPLETAR: cambiar los console.log por sweet alert!!(o similar)
+
+
+
 function actualizarEstadisticasJugadas(categoria) {
     cantJugadas++;
-    sessionStorage.setItem("cantJugadas", JSON.stringify(cantJugadas));
+    localStorage.setItem("cantJugadas", JSON.stringify(cantJugadas));
     let estadisticaDeCateg;
-    if(sessionStorage.getItem(categoria) != null){
-        estadisticaDeCateg = JSON.parse(sessionStorage.getItem(categoria));
+    if(localStorage.getItem(categoria) != null){
+        estadisticaDeCateg = JSON.parse(localStorage.getItem(categoria));
         estadisticaDeCateg.jugadas++;
     } else {
         estadisticaDeCateg = {
@@ -11,27 +15,27 @@ function actualizarEstadisticasJugadas(categoria) {
             correctas: 0,
         }
     }
-    sessionStorage.setItem(categoria, JSON.stringify(estadisticaDeCateg));
+    localStorage.setItem(categoria, JSON.stringify(estadisticaDeCateg));
 }
 function actualizarEstadisticasCorrecta(categoria) {
     cantCorrectas++;
-    sessionStorage.setItem("cantCorrectas", JSON.stringify(cantCorrectas));
-    let estadisticaDeCateg = JSON.parse(sessionStorage.getItem(categoria));
+    localStorage.setItem("cantCorrectas", JSON.stringify(cantCorrectas));
+    let estadisticaDeCateg = JSON.parse(localStorage.getItem(categoria));
     estadisticaDeCateg.correctas++;
-    sessionStorage.setItem(categoria, JSON.stringify(estadisticaDeCateg));
+    localStorage.setItem(categoria, JSON.stringify(estadisticaDeCateg));
 }
 
 function categoriaMasJugada() {
     const cantJuegosPorCategoria = [
-        JSON.parse(sessionStorage.getItem("geografia"))?.jugadas || 0,
-        JSON.parse(sessionStorage.getItem("historia"))?.jugadas || 0,
-        JSON.parse(sessionStorage.getItem("entretenimiento"))?.jugadas || 0,
-        JSON.parse(sessionStorage.getItem("ciencia"))?.jugadas || 0
+        JSON.parse(localStorage.getItem("geografia"))?.jugadas || 0,
+        JSON.parse(localStorage.getItem("historia"))?.jugadas || 0,
+        JSON.parse(localStorage.getItem("entretenimiento"))?.jugadas || 0,
+        JSON.parse(localStorage.getItem("ciencia"))?.jugadas || 0
     ];
     let juegosMax = Math.max(...cantJuegosPorCategoria);
     let res = [];
     for(let i=0; i<cantJuegosPorCategoria.length; i++) {
-        if(cantJuegosPorCategoria[i] == juegosMax) res.push(categoriasValidas[i]);
+        if(cantJuegosPorCategoria[i] == juegosMax) res.push(categoriasValidas[i]);  //COMPLETAR: FETCH ACA?
     }
     return res.toString();
 }
@@ -44,17 +48,17 @@ function mostrarEstadisticas() {
     document.querySelector("#categMasJugada").textContent = categoriaMasJugada();
 
 
-    document.querySelector("#cantJugadasGeografia").textContent = JSON.parse(sessionStorage.getItem("geografia"))?.jugadas || 0;
-    document.querySelector("#cantCorrectasGeografia").textContent = JSON.parse(sessionStorage.getItem("geografia"))?.correctas || 0;
+    document.querySelector("#cantJugadasGeografia").textContent = JSON.parse(localStorage.getItem("geografia"))?.jugadas || 0;
+    document.querySelector("#cantCorrectasGeografia").textContent = JSON.parse(localStorage.getItem("geografia"))?.correctas || 0;
 
-    document.querySelector("#cantJugadasHistoria").textContent = JSON.parse(sessionStorage.getItem("historia"))?.jugadas || 0;
-    document.querySelector("#cantCorrectasHistoria").textContent = JSON.parse(sessionStorage.getItem("historia"))?.correctas || 0;
+    document.querySelector("#cantJugadasHistoria").textContent = JSON.parse(localStorage.getItem("historia"))?.jugadas || 0;
+    document.querySelector("#cantCorrectasHistoria").textContent = JSON.parse(localStorage.getItem("historia"))?.correctas || 0;
 
-    document.querySelector("#cantJugadasEntretenimiento").textContent = JSON.parse(sessionStorage.getItem("entretenimiento"))?.jugadas || 0;
-    document.querySelector("#cantCorrectasEntretenimiento").textContent = JSON.parse(sessionStorage.getItem("entretenimiento"))?.correctas || 0;
+    document.querySelector("#cantJugadasEntretenimiento").textContent = JSON.parse(localStorage.getItem("entretenimiento"))?.jugadas || 0;
+    document.querySelector("#cantCorrectasEntretenimiento").textContent = JSON.parse(localStorage.getItem("entretenimiento"))?.correctas || 0;
 
-    document.querySelector("#cantJugadasCiencia").textContent = JSON.parse(sessionStorage.getItem("ciencia"))?.jugadas || 0;
-    document.querySelector("#cantCorrectasCiencia").textContent = JSON.parse(sessionStorage.getItem("ciencia"))?.correctas || 0;
+    document.querySelector("#cantJugadasCiencia").textContent = JSON.parse(localStorage.getItem("ciencia"))?.jugadas || 0;
+    document.querySelector("#cantCorrectasCiencia").textContent = JSON.parse(localStorage.getItem("ciencia"))?.correctas || 0;
 }
 
 
@@ -73,24 +77,38 @@ function elegirCategoria() {
     texto.textContent = "Elegí la categoría para la proxima pregunta:";
     document.getElementById("btnEmpezar").style.display = "initial";
     document.getElementById("botones").style.display = "grid";
-    opciones[0].textContent = categoriasValidas[0];
+
+
+    fetch("bd.json")
+    .then(res => res.json())
+    .then(bd => {
+
+    })
+    .catch(err => {console.log(err)})
+
+    opciones[0].textContent = categoriasValidas[0];     //COMPLETAR: FETCH ACA? (Y CAMBIAR POR UN FOR, i<catValidas.length)
     opciones[1].textContent = categoriasValidas[1];
     opciones[2].textContent = categoriasValidas[2];
     opciones[3].textContent = categoriasValidas[3];
     btnEmpezar.textContent = "aleatorio";
 }
 function elegirPregunta(categoria) {
-    let pregPosibles;
-    if(categoria == "aleatorio") {
-        pregPosibles = preguntas;
-    } else {
-        pregPosibles = preguntas.filter((preguntas) => categoria == preguntas.categoria);
-    }
-    return pregPosibles[Math.floor(Math.random() * pregPosibles.length)];
-}
-function escribirPregunta(categoria) {
     eligirCategoria = false;
-    pregActual = elegirPregunta(categoria);
+    let pregPosibles;
+    fetch("bd.json")
+        .then(res => res.json())
+        .then(bd => {
+            if(categoria == "aleatorio") {
+                pregPosibles = bd.preguntas;
+            } else {
+                pregPosibles = bd.preguntas.filter((preguntas) => categoria == preguntas.categoria);
+            }
+            escribirPregunta(pregPosibles[Math.floor(Math.random() * pregPosibles.length)]);
+        })
+        .catch(err => {console.log(err)})
+}
+function escribirPregunta(pregunta) {
+    pregActual = pregunta;
     actualizarEstadisticasJugadas(pregActual.categoria);
     texto.innerHTML = `<p style="padding-bottom: 10px;">Categoría: ${pregActual.categoria}</p> <p>${pregActual.pregunta}</p>`;
     document.getElementById("btnEmpezar").style.display = "none";

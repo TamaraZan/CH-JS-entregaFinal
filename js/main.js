@@ -2,11 +2,11 @@ const SVG_RUTA_ESTADIST =`<path fill="#c3d4d4" d="M9.037,40.763h4.286c0.552,0,1-
 const SVG_RUTA_CERRAR =`<path fill="#c3d4d4" d="M9.016,40.837c0.195,0.195,0.451,0.292,0.707,0.292c0.256,0,0.512-0.098,0.708-0.293l14.292-14.309 l14.292,14.309c0.195,0.196,0.451,0.293,0.708,0.293c0.256,0,0.512-0.098,0.707-0.292c0.391-0.39,0.391-1.023,0.001-1.414 L26.153,25.129L40.43,10.836c0.39-0.391,0.39-1.024-0.001-1.414c-0.392-0.391-1.024-0.391-1.414,0.001L24.722,23.732L10.43,9.423 c-0.391-0.391-1.024-0.391-1.414-0.001c-0.391,0.39-0.391,1.023-0.001,1.414l14.276,14.293L9.015,39.423 C8.625,39.813,8.625,40.447,9.016,40.837z"></path>`;
 
 
-let cantJugadas = JSON.parse(sessionStorage.getItem("cantJugadas")) || 0; 
-let cantCorrectas = JSON.parse(sessionStorage.getItem("cantCorrectas")) || 0;
+let cantJugadas = JSON.parse(localStorage.getItem("cantJugadas")) || 0; 
+let cantCorrectas = JSON.parse(localStorage.getItem("cantCorrectas")) || 0;
 
-const cantJugadasXCateg = JSON.parse(sessionStorage.getItem("cantJugadasXCateg")) || [0,0,0,0];
-const cantCorrectasXCateg = JSON.parse(sessionStorage.getItem("cantCorrectasXCateg")) || [0,0,0,0];
+const cantJugadasXCateg = JSON.parse(localStorage.getItem("cantJugadasXCateg")) || [0,0,0,0];
+const cantCorrectasXCateg = JSON.parse(localStorage.getItem("cantCorrectasXCateg")) || [0,0,0,0];
 
 const texto = document.querySelector("#texto");
 const btnEmpezar = document.querySelector("#btnEmpezar");
@@ -21,10 +21,10 @@ let pregActual;
 
 inicio();
 
-btnEmpezar.addEventListener("click", ()=> eligirCategoria?escribirPregunta("aleatorio"):elegirCategoria());
+btnEmpezar.addEventListener("click", ()=> eligirCategoria?elegirPregunta("aleatorio"):elegirCategoria());
 
 for(let i=0; i<4; i++){
-    opciones[i].addEventListener("click", ()=> eligirCategoria?escribirPregunta(categoriasValidas[i]):resultado(pregActual, i));
+    opciones[i].addEventListener("click", ()=> eligirCategoria?elegirPregunta(categoriasValidas[i]):resultado(pregActual, i));
 }
 
 btnEstadisticas.addEventListener("mouseover", mostrarEstadisticas);
