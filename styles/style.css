@@ -124,13 +124,32 @@ button::first-letter{
 }
 
 /* sweet alert styles */
-.errorAlert {
-    border: 5px solid rgb(216, 158, 83);
+.swal-modal {
+    border: 5px double rgb(82, 128, 128);
+    background-image: radial-gradient(rgb(231, 231, 231) 35%, rgb(159, 192, 192));
 }
-/* .swal-footer {
+.swal-icon--success::after, .swal-icon--success::before, .swal-icon--success__hide-corners {
+	background: transparent;
+}
+
+.swal-title {
+    font-size: 30px;
+}
+.swal-text {
+    font-size: 21px;
+    text-align: center;
+}
+
+.swal-footer {
     text-align: center;
 }
 .swal-button {
     padding: 4px;
     width: 70px;
-} */
+}
+
+.errorAlert {
+    border: 5px solid rgb(216, 158, 83);
+    background-color: rgb(231, 231, 231);
+    background-image: none;
+}

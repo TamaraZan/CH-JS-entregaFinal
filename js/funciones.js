@@ -60,8 +60,10 @@ function mostrarEstadisticas() {
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
-async function msjError(err){
+function msjError(err){
     swal("Error al cargar datos", err.toString(), "warning", {
+        closeOnClickOutside: false,
+        closeOnEsc: false,
         button: false,
         className: "errorAlert"
     })
@@ -112,12 +114,21 @@ function escribirPregunta(pregunta) {
 }
 
 function resultado(pregActual, nroRta){
-    document.getElementById("botones").style.display = "none";
+    let titulo = "";
+    let texto = "";
+    let icono = "";
     if(pregActual.correcta == nroRta) {
-        texto.textContent="Correcta";
+        titulo = "Correcta";
+        icono = "success";
         actualizarEstadisticasCorrecta(pregActual.categoria);
     } else {
-        texto.textContent="Incorrecta";
+        titulo = "Incorrecta";
+        texto = `La respuesta correcta era: ${pregActual.opciones[pregActual.correcta]}`;
+        icono = "error";
     }
-    setTimeout(inicio, 1500);
+    swal(titulo, texto, icono)
+        .then(() => {
+            document.getElementById("botones").style.display = "none";
+            inicio();
+        })
 }
