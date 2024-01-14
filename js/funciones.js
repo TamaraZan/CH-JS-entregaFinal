@@ -1,7 +1,3 @@
-//COMPLETAR: cambiar los console.log por sweet alert!!(o similar)
-
-
-
 function actualizarEstadisticasJugadas(categoria) {
     cantJugadas++;
     localStorage.setItem("cantJugadas", JSON.stringify(cantJugadas));
@@ -35,7 +31,7 @@ function categoriaMasJugada() {
     let juegosMax = Math.max(...cantJuegosPorCategoria);
     let res = [];
     for(let i=0; i<cantJuegosPorCategoria.length; i++) {
-        if(cantJuegosPorCategoria[i] == juegosMax) res.push(categoriasValidas[i]);  //COMPLETAR: FETCH ACA?
+        if(cantJuegosPorCategoria[i] == juegosMax) res.push(categoriasValidas[i]);
     }
     return res.toString();
 }
@@ -64,6 +60,13 @@ function mostrarEstadisticas() {
 
 //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
+async function msjError(err){
+    swal("Error al cargar datos", err.toString(), "warning", {
+        button: false,
+        className: "errorAlert"
+    })
+}
+
 
 function inicio() {
     document.getElementById("btnEmpezar").style.display = "initial";
@@ -77,19 +80,9 @@ function elegirCategoria() {
     texto.textContent = "Elegí la categoría para la proxima pregunta:";
     document.getElementById("btnEmpezar").style.display = "initial";
     document.getElementById("botones").style.display = "grid";
-
-
-    fetch("bd.json")
-    .then(res => res.json())
-    .then(bd => {
-
-    })
-    .catch(err => {console.log(err)})
-
-    opciones[0].textContent = categoriasValidas[0];     //COMPLETAR: FETCH ACA? (Y CAMBIAR POR UN FOR, i<catValidas.length)
-    opciones[1].textContent = categoriasValidas[1];
-    opciones[2].textContent = categoriasValidas[2];
-    opciones[3].textContent = categoriasValidas[3];
+    for(let i = 0; i<categoriasValidas.length; i++){
+        opciones[i].textContent = categoriasValidas[i];
+    }
     btnEmpezar.textContent = "aleatorio";
 }
 function elegirPregunta(categoria) {
@@ -105,7 +98,7 @@ function elegirPregunta(categoria) {
             }
             escribirPregunta(pregPosibles[Math.floor(Math.random() * pregPosibles.length)]);
         })
-        .catch(err => {console.log(err)})
+        .catch(err => {msjError(err)})
 }
 function escribirPregunta(pregunta) {
     pregActual = pregunta;

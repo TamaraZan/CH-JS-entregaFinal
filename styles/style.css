@@ -122,3 +122,15 @@ button::first-letter{
 #estadisticas hr {
     margin-top: 5px;
 }
+
+/* sweet alert styles */
+.errorAlert {
+    border: 5px solid rgb(216, 158, 83);
+}
+/* .swal-footer {
+    text-align: center;
+}
+.swal-button {
+    padding: 4px;
+    width: 70px;
+} */
