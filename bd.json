@@ -146,7 +146,7 @@
             "correcta": 3
         },
         {
-            "pregunta": "Según la leyenda ¿quiénes fundaron a Roma?",
+            "pregunta": "Según la leyenda, ¿quiénes fundaron a Roma?",
             "categoria": "historia",
             "opciones": [
                 "Rómulo y Remus",
@@ -212,7 +212,7 @@
             "correcta": 2
         },
         {
-            "pregunta": "¿Quién creo los cómics de Spiderman?",
+            "pregunta": "¿Quién creó los cómics de Spiderman?",
             "categoria": "entretenimiento",
             "opciones": [
                 "Chris Claremont",

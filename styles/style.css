@@ -113,6 +113,7 @@ button::first-letter{
     padding-bottom: 5px;
     border: 5px solid var(--color-main-medio); 
     max-height: 90vh;
+    max-width: calc(100vw - 2*(2vw + 50px));
     overflow-y: auto;
 }
 #estadisticas div {
@@ -166,4 +167,13 @@ button::first-letter{
     border: 5px solid rgb(216, 158, 83);
     background-color: var(--color-blanco);
     background-image: none;
+}
+
+
+
+
+@media (max-width: 650px) {
+    #botones {
+        grid-template-columns: 1fr;
+    }
 }

@@ -33,7 +33,7 @@ function categoriaMasJugada() {
     for(let i=0; i<cantJuegosPorCategoria.length; i++) {
         if(cantJuegosPorCategoria[i] == juegosMax) res.push(categoriasValidas[i]);
     }
-    return res.toString();
+    return res.join(", ");
 }
 function mostrarEstadisticas() {
     document.getElementById("estadisticas").style.display= "block";
